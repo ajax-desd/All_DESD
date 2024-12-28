@@ -125,4 +125,9 @@ git remote -v
    ```bash
    git log
    ```
+8. Update remote URL to SSH:
+   ```bash
+   git remote set-url origin git@github.com:<username>/<repository>.git
+   ```
+
 
