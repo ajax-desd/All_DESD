@@ -1,0 +1,1 @@
+cmd_/home/desd/Desktop/EDD/bb-codes/mod11/interrupt_handkler/Module.symvers := sed 's/ko$$/o/' /home/desd/Desktop/EDD/bb-codes/mod11/interrupt_handkler/modules.order | scripts/mod/modpost -m    -o /home/desd/Desktop/EDD/bb-codes/mod11/interrupt_handkler/Module.symvers -e -i Module.symvers   -T -

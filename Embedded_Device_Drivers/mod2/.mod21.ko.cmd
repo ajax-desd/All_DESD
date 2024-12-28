@@ -1,0 +1,1 @@
+cmd_/home/desd/EDD/bb-codes/mod2/mod21.ko := arm-linux-gnueabihf-ld -r  -EL -z noexecstack   --build-id=sha1  -T scripts/module.lds -o /home/desd/EDD/bb-codes/mod2/mod21.ko /home/desd/EDD/bb-codes/mod2/mod21.o /home/desd/EDD/bb-codes/mod2/mod21.mod.o;  true

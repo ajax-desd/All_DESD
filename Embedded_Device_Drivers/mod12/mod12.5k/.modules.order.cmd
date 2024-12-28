@@ -1,0 +1,1 @@
+cmd_/home/desd/Desktop/EDD/bb-codes/mod12/mod12.5k/modules.order := {   echo /home/desd/Desktop/EDD/bb-codes/mod12/mod12.5k/wq_ll.ko;   echo /home/desd/Desktop/EDD/bb-codes/mod12/mod12.5k/mod12-5.ko; :; } | awk '!x[$$0]++' - > /home/desd/Desktop/EDD/bb-codes/mod12/mod12.5k/modules.order

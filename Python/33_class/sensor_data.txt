@@ -1,0 +1,5 @@
+temperature : 22
+humidity : 60
+pressure : 1013
+aiq : 62
+home : uttarakhand

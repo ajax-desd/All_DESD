@@ -1,0 +1,1 @@
+cmd_/home/desd/EDD/bb-codes/mod4/mod4.o := arm-linux-gnueabihf-ld  -EL -z noexecstack     -r -o /home/desd/EDD/bb-codes/mod4/mod4.o /home/desd/EDD/bb-codes/mod4/mod41.o /home/desd/EDD/bb-codes/mod4/mod42.o

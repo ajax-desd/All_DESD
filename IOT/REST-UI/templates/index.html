@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REST APPLICATION DESIGNED FOR PGDESD STUDENTS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group button {
+            width: 48%;
+            padding: 10px;
+            margin: 5px 1%;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>REST APPLICATION DESIGNED FOR PGDESD STUDENTS</h1>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password">
+        </div>
+        <div class="form-group">
+            <button onclick="signUp()">Sign Up</button>
+            <button onclick="signIn()">Sign In</button>
+        </div>
+        <div class="form-group">
+            <label for="device_id">Device ID</label>
+            <input type="text" id="device_id">
+        </div>
+        <div class="form-group">
+            <label for="device_data">Device Data (JSON)</label>
+            <input type="text" id="device_data">
+        </div>
+        <div class="form-group">
+            <button onclick="getDevices()">Get All Devices</button>
+            <button onclick="getDevice()">Get Device</button>
+        </div>
+        <div class="form-group">
+            <button onclick="createDevice()">Create Device</button>
+            <button onclick="updateDevice()">Update Device</button>
+        </div>
+        <div class="form-group">
+            <button onclick="deleteDevice()">Delete Device</button>
+        </div>
+        <pre id="response"></pre>
+    </div>
+    <script>
+        let accessToken = '';
+
+        function displayResponse(response) {
+            document.getElementById('response').innerText = JSON.stringify(response, null, 2);
+        }
+
+        async function signUp() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const response = await fetch('/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+            const data = await response.json();
+            displayResponse(data);
+        }
+
+        async function signIn() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const response = await fetch('/signin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+            const data = await response.json();
+            accessToken = data.access_token;
+            displayResponse(data);
+        }
+
+        async function getDevices() {
+            const response = await fetch('/devices', {
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                }
+            });
+            const data = await response.json();
+            displayResponse(data);
+        }
+
+        async function getDevice() {
+            const deviceId = document.getElementById('device_id').value;
+            const response = await fetch(`/device/${deviceId}`, {
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                }
+            });
+            const data = await response.json();
+            displayResponse(data);
+        }
+
+        async function createDevice() {
+            const deviceData = JSON.parse(document.getElementById('device_data').value);
+            const response = await fetch('/device', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + accessToken
+                },
+                body: JSON.stringify(deviceData)
+            });
+            const data = await response.json();
+            displayResponse(data);
+        }
+
+        async function updateDevice() {
+            const deviceId = document.getElementById('device_id').value;
+            const deviceData = JSON.parse(document.getElementById('device_data').value);
+            const response = await fetch(`/device/${deviceId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + accessToken
+                },
+                body: JSON.stringify(deviceData)
+            });
+            const data = await response.json();
+            displayResponse(data);
+        }
+
+        async function deleteDevice() {
+            const deviceId = document.getElementById('device_id').value;
+            const response = await fetch(`/device/${deviceId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                }
+            });
+            const data = await response.json();
+            displayResponse(data);
+        }
+    </script>
+</body>
+</html>

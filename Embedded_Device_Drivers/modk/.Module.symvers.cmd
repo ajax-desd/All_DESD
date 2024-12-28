@@ -1,0 +1,1 @@
+cmd_/home/desd/Desktop/EDD/bb-codes/modk/Module.symvers := sed 's/ko$$/o/' /home/desd/Desktop/EDD/bb-codes/modk/modules.order | scripts/mod/modpost -m    -o /home/desd/Desktop/EDD/bb-codes/modk/Module.symvers -e -i Module.symvers   -T -

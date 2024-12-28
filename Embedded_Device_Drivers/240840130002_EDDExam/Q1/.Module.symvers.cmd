@@ -1,0 +1,1 @@
+cmd_/home/desd/Desktop/EDD/bb-codes/240840130002_EDDExam/Q1/Module.symvers := sed 's/ko$$/o/' /home/desd/Desktop/EDD/bb-codes/240840130002_EDDExam/Q1/modules.order | scripts/mod/modpost -m    -o /home/desd/Desktop/EDD/bb-codes/240840130002_EDDExam/Q1/Module.symvers -e -i Module.symvers   -T -

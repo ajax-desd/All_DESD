@@ -1,0 +1,1 @@
+cmd_/home/desd/Desktop/EDD/bb-codes/mod8/mod82.ko := arm-linux-gnueabihf-ld -r -EL -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/desd/Desktop/EDD/bb-codes/mod8/mod82.ko /home/desd/Desktop/EDD/bb-codes/mod8/mod82.o /home/desd/Desktop/EDD/bb-codes/mod8/mod82.mod.o;  true
